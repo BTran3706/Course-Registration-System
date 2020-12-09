@@ -1,0 +1,32 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="">
+    <div class="">
+        <a class="" href="{% url 'student_report_pdf' student.id %}" target="_blank">Print Report</a>
+        <div class="card card-body">
+            <h3>{{student.name}}</h3>
+            <p>
+            {% if user.is_student %}
+                <a href="{% url 'update_personal_info' %}" class="btn btn-outline-info">Update</a>
+            {% elif user.is_faculty %}
+                <a class="btn btn-outline-primary" href="{% url 'student_outline' student.id %}" >Edit Student Outline</a>
+            {% endif %}
+            </p>
+            <hr>
+            <p>Date of Birth: {{student.date_of_birth}}</p>
+            <p>Address: {{student.address}}</p>
+            <p>Phone: {{student.phone}}</p>
+            <p>Major: {{student.major}}</p>
+            <p>Minor: {{student.minor}}</p>
+            <p>GPA: {{student_gpa}}</p>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock content%}

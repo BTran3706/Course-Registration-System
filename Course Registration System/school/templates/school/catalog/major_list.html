@@ -1,0 +1,46 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Major Catalog</h2>
+
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="col-12 mb-3">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="text-center" scope="col">#</th>
+                            <th class="text-center" scope="col">Department</th>
+                            <th class="text-center" scope="col">Major</th>
+                            <th class="text-center" scope="col">Prerequisites</th>
+                        </tr>
+                    </thead>
+
+                    {% for major, req_course_list in major_dict.items %}
+                    <tbody>
+                        <tr>
+                            <td class="text-center" scope="col">{{major.id}}</td>
+                            <td>{{major.department}}</td>
+                            <td>{{major}}</td>
+                            <td
+                                id={{major.id}}
+                                data-type="course"
+                                onClick="highlightEdit(this);"
+                            >
+                                {% for course in req_course_list %}
+                                    {{course}}
+                                {% endfor %}
+
+                            </td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,6 @@
+migrations
+.ideagit
+.idea/
+Pipfile
+Pipfile.lock
+secret_key.py

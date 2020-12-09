@@ -1,0 +1,70 @@
+<html>
+
+<head>
+<style>
+    @page {
+        size: a4 portrait;
+        @frame header_frame {           /* Static Frame */
+            -pdf-frame-content: header_content;
+            left: 50pt; width: 512pt; top: 50pt; height: 60pt;
+        }
+        @frame content_frame {          /* Content Frame */
+            left: 50pt; width: 512pt; top: 120pt; height: 632pt;
+        }
+        @frame footer_frame {           /* Another static Frame */
+            -pdf-frame-content: footer_content;
+            left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <!-- Content for Static Frame 'header_frame' -->
+    <div id="header_content">
+		<h4>Period: {{course.semester}}</h4>
+    	<h3>Course ID: {{course.course_id}} - {{course.title}}</h3>
+    </div>
+
+    <!-- HTML Content -->
+    <table>
+    		<tr>
+    			<td><b>Department:</b> {{course.department}}</td>
+    			<td><b>Date:</b> {{course.start_date}} - {{course.end_date}}</td>
+    		</tr>
+    		<tr>
+    			<td><b>Schedule Number:</b> {{course.schedule_number}}</td>
+    			<td><b>Time:</b> {{course.time}} {{course.day}}</td>
+    		</tr>
+    		<tr>
+    			<td><b>Instructor:</b> {{course.instructor}}</td>
+    			<td><b>Units:</b> {{course.units}}</td>
+    		</tr>
+    </table>
+
+    <hr>
+
+    <table>
+		<tr>
+
+			<td><b>Student</b></td>
+    		<td><b>Student ID</b></td>
+    		<td><b>Grade</b></td>
+		</tr>
+
+		{% for student in student_list %}
+			<tr>
+				<td>{{student.student.name}}</td>
+				<td>{{student.id}}</td>
+				<td>{{student.grade}}</td>
+    		</tr>
+		{% endfor %}
+    </table>
+
+    <hr>
+<!-- Content for Static Frame 'footer_frame' -->
+	<div id="footer_content">(c) - page <pdf:pagenumber></pdf:pagenumber>
+		of <pdf:pagecount></pdf:pagecount>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{% extends 'school/base.html' %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col">
+		<h5>FACULTY SEARCH:</h5>
+		<div class="card card-body">
+			<form method="get">
+<!--			{{filter.form.as_p}}-->
+
+			{{filter.form.department.label}}
+			<a data-toggle="tooltip" title="Search faculty by department">{{filter.form.department}}</a>
+			<br>
+			{{filter.form.name.label}}
+			<a data-toggle="tooltip" title="Search faculty by name">{{filter.form.name}}</a>
+			<br>
+			{{filter.form.date_of_birth.label}}
+			<a data-toggle="tooltip" title="Search faculty by date of birth">{{filter.form.date_of_birth}}</a>
+			<br>
+			{{filter.form.address.label}}
+			<a data-toggle="tooltip" title="Search faculty by address">{{filter.form.address}}</a>
+			<br>
+			{{filter.form.title.label}}
+			<a data-toggle="tooltip" title="Search faculty by title">{{filter.form.title}}</a>
+			<br>
+			{{filter.form.office_phone.label}}
+			<a data-toggle="tooltip" title="Search faculty by office phone number">{{filter.form.office_phone}}</a>
+			<br>
+			{{filter.form.office_number.label}}
+			<a data-toggle="tooltip" title="Search faculty by office number">{{filter.form.office_number}}</a>
+
+
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+
+<div class="col-md-12">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Title</th>
+					<th>Office Phone</th>
+					<th>Office Number</th>
+					<th>Department</th>
+				</tr>
+
+				{% for faculty in faculty_list %}
+					<tr>
+						<td><a href="{% url 'faculty_detail' faculty.id %}">{{faculty.name}}</a></td>
+						<td>{{faculty.title}}</td>
+						<td>{{faculty.office_phone}}</td>
+						<td>{{faculty.office_number}}</td>
+                        <td>{{faculty.department}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

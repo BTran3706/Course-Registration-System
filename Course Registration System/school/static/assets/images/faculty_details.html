@@ -1,0 +1,33 @@
+{% extends 'school/main.html' %}
+
+{% block content %}
+
+	<br>
+
+	<div class="row ">
+
+	<div class="col-md ">
+		<div class="card card-body">
+			<h5>My Information
+				<a href="{% url 'account' user.id %}" class="btn btn-outline-info">Update</a>
+			</h5>
+			<hr>
+			<p>Name: {{faculty.name}}</p>
+			<p>Title: {{faculty.title}}</p>
+			<p>Office Phone: {{faculty.office_phone}}</p>
+			<p>Office Number: {{faculty.office_number}}</p>
+			<p>Office Hours: {{faculty.office_hours}}</p>
+			<p>Department: {{faculty.department}}</p>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
